@@ -1,0 +1,75 @@
+==67598== Memcheck, a memory error detector
+==67598== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==67598== Using Valgrind-3.19.0.GIT-lbmacos and LibVEX; rerun with -h for copyright info
+==67598== Command: ./philosopher 5 140 66 55
+==67598== Parent PID: 66021
+==67598== 
+--67598-- run: /usr/bin/dsymutil "./philosopher"
+==67598== Thread 3:
+==67598== Conditional jump or move depends on uninitialised value(s)
+==67598==    at 0x1000035CD: routine_philo (philo.c:86)
+==67598==    by 0x100628108: _pthread_start (in /usr/lib/system/libsystem_pthread.dylib)
+==67598==    by 0x100623B8A: thread_start (in /usr/lib/system/libsystem_pthread.dylib)
+==67598== 
+==67598== Thread 5:
+==67598== Conditional jump or move depends on uninitialised value(s)
+==67598==    at 0x1000039ED: thinking (actions.c:55)
+==67598==    by 0x1000036C0: routine_philo (philo.c:93)
+==67598==    by 0x100628108: _pthread_start (in /usr/lib/system/libsystem_pthread.dylib)
+==67598==    by 0x100623B8A: thread_start (in /usr/lib/system/libsystem_pthread.dylib)
+==67598== 
+==67598== Thread 1:
+==67598== Conditional jump or move depends on uninitialised value(s)
+==67598==    at 0x100003C64: death_watcher (free_death.c:32)
+==67598==    by 0x1000031EA: main (philo_main.c:78)
+==67598== 
+==67598== 
+==67598== FILE DESCRIPTORS: 6 open (3 std) at exit.
+==67598== Open file descriptor 27: /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+==67598==    <inherited from parent>
+==67598== 
+==67598== Open file descriptor 12: /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+==67598==    <inherited from parent>
+==67598== 
+==67598== Open file descriptor 3: /Users/slord/Desktop/CURSUS/philo/philo_v2/valgrind.rpt
+==67598==    <inherited from parent>
+==67598== 
+==67598== 
+==67598== HEAP SUMMARY:
+==67598==     in use at exit: 18,728 bytes in 166 blocks
+==67598==   total heap usage: 180 allocs, 14 frees, 23,472 bytes allocated
+==67598== 
+==67598== 40 bytes in 1 blocks are still reachable in loss record 14 of 41
+==67598==    at 0x100124545: malloc (in /Users/slord/.brew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==67598==    by 0x1000033AA: init_philo (philo.c:49)
+==67598==    by 0x1000032A6: start (philo.c:19)
+==67598==    by 0x1000031DB: main (philo_main.c:76)
+==67598== 
+==67598== 136 bytes in 1 blocks are still reachable in loss record 26 of 41
+==67598==    at 0x100124545: malloc (in /Users/slord/.brew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==67598==    by 0x100002FDB: get_struc_table (philo_main.c:20)
+==67598==    by 0x1000030D3: init_table (philo_main.c:51)
+==67598==    by 0x1000031D3: main (philo_main.c:75)
+==67598== 
+==67598== 240 bytes in 1 blocks are still reachable in loss record 28 of 41
+==67598==    at 0x100124545: malloc (in /Users/slord/.brew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==67598==    by 0x1000033C5: init_philo (philo.c:50)
+==67598==    by 0x1000032A6: start (philo.c:19)
+==67598==    by 0x1000031DB: main (philo_main.c:76)
+==67598== 
+==67598== 320 bytes in 1 blocks are still reachable in loss record 34 of 41
+==67598==    at 0x100124545: malloc (in /Users/slord/.brew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==67598==    by 0x1000032FA: init_mutex (philo.c:31)
+==67598==    by 0x10000328C: start (philo.c:17)
+==67598==    by 0x1000031DB: main (philo_main.c:76)
+==67598== 
+==67598== LEAK SUMMARY:
+==67598==    definitely lost: 0 bytes in 0 blocks
+==67598==    indirectly lost: 0 bytes in 0 blocks
+==67598==      possibly lost: 0 bytes in 0 blocks
+==67598==    still reachable: 736 bytes in 4 blocks
+==67598==         suppressed: 17,992 bytes in 162 blocks
+==67598== 
+==67598== Use --track-origins=yes to see where uninitialised values come from
+==67598== For lists of detected and suppressed errors, rerun with: -s
+==67598== ERROR SUMMARY: 739 errors from 3 contexts (suppressed: 7 from 7)
